@@ -2,7 +2,7 @@
 
 ## 使用 Vi 编辑文件
 
-```sh
+```shell
 vi .bash_profile
 ```
 
