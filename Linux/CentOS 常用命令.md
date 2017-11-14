@@ -86,3 +86,15 @@ firewall-cmd --permanent --remove-port=27017/tcp
 firewall-cmd --permanent --add-port=27082/tcp
 firewall-cmd --reload
 ```
+
+## 上传文件（在本地目录操作）
+
+```bash
+scp web.json root@szx.thinkchina.com.au:/bill/site/
+```
+
+## 下载文件（在本地目录操作）
+
+```bash
+scp root@szx.thinkchina.com.au:/bill/site/web.json ./
+```
