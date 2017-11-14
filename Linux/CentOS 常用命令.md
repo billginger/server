@@ -18,16 +18,28 @@ tar -xvf node-v8.9.1-linux-x64.tar.xz
 mv node-v8.9.1-linux-x64 node
 ```
 
+## 新建文件
+
+```bash
+touch web.json
+```
+
+## 修改文本文件
+
+```bash
+vi .bash_profile
+```
+
 ## 删除目录及该目录下所有子目录和文件，且不需确认（慎用）
 
 ```bash
-rm -rf <目录名>
+rm -rf node_modules
 ```
 
 ## 查看文件内容，支持翻页查看
 
 ```bash
-less <文件名>
+less config.json
 ```
 
 ## 查看 CentOS 系统版本
@@ -64,4 +76,13 @@ ps -ef
 
 ```bash
 netstat -lntp
+```
+
+## 改变 MongoDB 访问端口
+
+```bash
+firewall-cmd --list-all
+firewall-cmd --permanent --remove-port=27017/tcp
+firewall-cmd --permanent --add-port=27082/tcp
+firewall-cmd --reload
 ```
