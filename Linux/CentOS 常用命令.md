@@ -42,6 +42,12 @@ rm -rf node_modules
 less config.json
 ```
 
+## 安装软件
+
+```bash
+yum -y install git-core
+```
+
 ## 查看 CentOS 系统版本
 
 ```bash
