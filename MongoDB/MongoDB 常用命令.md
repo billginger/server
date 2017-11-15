@@ -18,7 +18,7 @@ db.message.find({ CreateTime: { $lt: 1504680640, $gt: 1504679775 } }).count()
 
 ### 排序
 
-```bash
+```mongodb
 db.message.find().sort({ _id: -1 })
 ```
 
