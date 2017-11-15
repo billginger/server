@@ -14,7 +14,7 @@ npm install pm2 -g
 		"name": "http",
 		"script": "./http/index.js",
 		"watch": true,
-		"log_date_format": "yyyy-MM-dd HH:mm:ss",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss",
 		"error_file": "./pm2logs/http_err.log",
 		"out_file": "./pm2logs/http_out.log"
 	}, {
@@ -22,7 +22,7 @@ npm install pm2 -g
 		"script": "./sale/index.js",
 		"cwd": "./sale/",
 		"watch": true,
-		"log_date_format": "yyyy-MM-dd HH:mm:ss",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss",
 		"error_file": "./pm2logs/sale_err.log",
 		"out_file": "./pm2logs/sale_out.log"
 	}]
