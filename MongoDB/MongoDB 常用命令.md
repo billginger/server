@@ -1,2 +1,51 @@
 # MongoDB 常用命令
 
+## 查询
+
+### 按日期查询
+
+```bash
+db.message.find({ createdAt: { $gte: new Date('2017-8-1 11:51:00') } })
+```
+
+备注：gt大于，lt小于，gte大于等于，lte小于等于
+
+## 导出数据库
+
+### 本地，指定端口，打包成 gz 文件
+
+```bash
+mongodump --gzip --db wpm --archive=/root/bill/site/wpm/db/wpm.gz --port=27082
+```
+
+### 阿里云，打包成 gz 文件
+
+```bash
+mongodump -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wmp --gzip --archive=/data/backup/wmp.gz
+```
+
+### 阿里云，按集合打包成 gz 文件，导出到指定目录
+
+```bash
+mongodump -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm -o /data/backup --gzip
+```
+
+## 导入数据库
+
+### 本地，指定端口
+
+```bash
+mongorestore --gzip --archive=/home/bill/site/wpm/db/wpm.gz --port=27082
+```
+
+### 阿里云，导入时指定库名
+
+```bash
+mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wmp2 --gzip --archive=/data/backup/wmp.gz
+```
+
+### 阿里云，导入指定目录的 gz 文件
+
+```bash
+mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm2 /data/backup/wpm --gzip
+```
