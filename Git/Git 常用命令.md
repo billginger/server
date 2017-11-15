@@ -30,7 +30,7 @@ git add .
 git commit -m "the commit message"
 ```
 
-## push所有分支
+## push 所有分支
 
 ```bash
 git push
