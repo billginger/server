@@ -4,7 +4,7 @@
 
 ### 按日期查询
 
-```bash
+```
 db.message.find({ createdAt: { $gte: new Date('2017-8-1 11:51:00') } })
 ```
 
@@ -12,19 +12,19 @@ db.message.find({ createdAt: { $gte: new Date('2017-8-1 11:51:00') } })
 
 ### 按条件统计数量
 
-```bash
+```
 db.message.find({ CreateTime: { $lt: 1504680640, $gt: 1504679775 } }).count()
 ```
 
 ### 排序
 
-```mongodb
+```
 db.message.find().sort({ _id: -1 })
 ```
 
 ### 指定最大记录数
 
-```bash
+```
 db.getCollection('message').find({}).limit(161355)
 ```
 
@@ -32,19 +32,19 @@ db.getCollection('message').find({}).limit(161355)
 
 ### 本地，指定端口，打包成 gz 文件
 
-```bash
+```
 mongodump --gzip --db wpm --archive=/root/bill/site/wpm/db/wpm.gz --port=27082
 ```
 
 ### 阿里云，打包成 gz 文件
 
-```bash
+```
 mongodump -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wmp --gzip --archive=/data/backup/wmp.gz
 ```
 
 ### 阿里云，按集合打包成 gz 文件，导出到指定目录
 
-```bash
+```
 mongodump -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm -o /data/backup --gzip
 ```
 
@@ -52,25 +52,25 @@ mongodump -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u 
 
 ### 本地，指定端口
 
-```bash
+```
 mongorestore --gzip --archive=/home/bill/site/wpm/db/wpm.gz --port=27082
 ```
 
 ### 阿里云，导入时指定库名
 
-```bash
+```
 mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wmp2 --gzip --archive=/data/backup/wmp.gz
 ```
 
 ### 阿里云，导入指定目录的 gz 文件
 
-```bash
+```
 mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm2 /data/backup/wpm --gzip
 ```
 
 ## 跨库移动集合
 
-```bash
+```
 use admin
 db.runCommand({ renameCollection: "[oldDbName].[collectionName]", to: "[newDbName].[collectionName]" })
 ```
