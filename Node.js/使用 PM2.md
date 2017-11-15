@@ -12,19 +12,19 @@ npm install pm2 -g
 {
 	"apps" : [{
 		"name": "http",
-        "script": "./http/index.js",
-        "watch": true,
-        "log_date_format": "yyyy-MM-dd HH:mm:ss",
-        "error_file": "./pm2logs/http_err.log",
-        "out_file": "./pm2logs/http_out.log"
+		"script": "./http/index.js",
+		"watch": true,
+		"log_date_format": "yyyy-MM-dd HH:mm:ss",
+		"error_file": "./pm2logs/http_err.log",
+		"out_file": "./pm2logs/http_out.log"
 	}, {
 		"name": "sale",
 		"script": "./sale/index.js",
 		"cwd": "./sale/",
-        "watch": true,
-        "log_date_format": "yyyy-MM-dd HH:mm:ss",
-        "error_file": "./pm2logs/sale_err.log",
-        "out_file": "./pm2logs/sale_out.log"
+		"watch": true,
+		"log_date_format": "yyyy-MM-dd HH:mm:ss",
+		"error_file": "./pm2logs/sale_err.log",
+		"out_file": "./pm2logs/sale_out.log"
 	}]
 }
 ```
