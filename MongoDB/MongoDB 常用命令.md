@@ -8,7 +8,25 @@
 db.message.find({ createdAt: { $gte: new Date('2017-8-1 11:51:00') } })
 ```
 
-备注：gt大于，lt小于，gte大于等于，lte小于等于
+> 备注：gt大于，lt小于，gte大于等于，lte小于等于
+
+### 按条件统计数量
+
+```bash
+db.message.find({ CreateTime: { $lt: 1504680640, $gt: 1504679775 } }).count()
+```
+
+### 排序
+
+```bash
+db.message.find().sort({ _id: -1 })
+```
+
+### 指定最大记录数
+
+```bash
+db.getCollection('message').find({}).limit(161355)
+```
 
 ## 导出数据库
 
@@ -48,4 +66,11 @@ mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin 
 
 ```bash
 mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm2 /data/backup/wpm --gzip
+```
+
+## 跨库移动集合
+
+```bash
+use admin
+db.runCommand({ renameCollection: "[oldDbName].[collectionName]", to: "[newDbName].[collectionName]" })
 ```
