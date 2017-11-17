@@ -93,6 +93,12 @@ firewall-cmd --permanent --add-port=27082/tcp
 firewall-cmd --reload
 ```
 
+## CentOS7 修改主机名
+
+```
+hostnamectl set-hostname xxx
+```
+
 ## 上传文件（在本地目录操作）
 
 ```
