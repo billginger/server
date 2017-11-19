@@ -12,6 +12,12 @@ wget https://nodejs.org/dist/v8.9.1/node-v8.9.1-linux-x64.tar.xz
 tar -xvf node-v8.9.1-linux-x64.tar.xz
 ```
 
+## 压缩目录
+
+```
+tar zcvf pem.tar.gz pem
+```
+
 ## 重命名目录
 
 ```
@@ -42,10 +48,22 @@ rm -rf node_modules
 less config.json
 ```
 
-## 安装软件
+## 安装 Git
 
 ```
 yum -y install git-core
+```
+
+## 安装 lrzsz
+
+```
+yum -y install lrzsz
+```
+
+## 生成 SSH-Key
+
+```
+ssh-keygen -t rsa -C "Bill"
 ```
 
 ## 查看 CentOS 系统版本
@@ -82,6 +100,12 @@ ps -ef
 
 ```
 netstat -lntp
+```
+
+## 获取 firewalld 状态
+
+```
+firewall-cmd --state
 ```
 
 ## 改变 MongoDB 访问端口
