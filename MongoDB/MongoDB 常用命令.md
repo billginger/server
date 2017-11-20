@@ -68,6 +68,12 @@ mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin 
 mongorestore -h id.mongodb.rds.aliyuncs.com:3717 --authenticationDatabase admin -u root -p password -d wpm2 /data/backup/wpm --gzip
 ```
 
+### 3.4 版本以后，需使用 --nsFrom 和 --nsTo 在导入时重命名库名
+
+```
+mongorestore --gzip --archive=/Users/bill/node/backup/wmp.gz --nsFrom 'wmp.*' --nsTo 'wmp2.*'
+```
+
 ## 跨库移动集合
 
 ```
