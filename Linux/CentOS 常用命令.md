@@ -24,6 +24,12 @@ tar zcvf pem.tar.gz pem
 mv node-v8.9.1-linux-x64 node
 ```
 
+## 设置目录的权限
+
+```
+chmod -R 777 node_modules
+```
+
 ## 新建文件
 
 ```
