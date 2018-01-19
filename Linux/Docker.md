@@ -70,3 +70,7 @@ WordPress 默认使用 80 端口，如 80 端口已被占用，可以映射别�
 -tail=10 : 查看最后的10条日志。
 
 wordpress : 容器名称（必须）
+
+## 安装一个 Alpine 版本的 PHP 环境
+
+`docker pull registry.docker-cn.com/library/php:7.2-fpm-alpine`
