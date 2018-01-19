@@ -35,7 +35,7 @@ https://store.docker.com/editions/community/docker-ce-desktop-mac
 
 ## 运行 WordPress
 
-`docker run --name wordpress --link mysql:mysql -d wordpress`
+`docker run --name wordpress --link mysql:mysql -p 80:80 -d wordpress`
 
 启动 WordPress 容器时可以指定的一些环境参数包括：
 
