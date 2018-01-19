@@ -74,3 +74,5 @@ wordpress : 容器名称（必须）
 ## 安装一个 Alpine 版本的 PHP 环境
 
 `docker pull registry.docker-cn.com/library/php:7.2-fpm-alpine`
+
+`docker run -p 9000:9000 --name php -v ~/docker/wordpress/org:/www -d php:7.2-fpm-alpine`
