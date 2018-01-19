@@ -56,3 +56,17 @@ https://store.docker.com/editions/community/docker-ce-desktop-mac
 WordPress 默认使用 80 端口，如 80 端口已被占用，可以映射别的端口，比如：
 
 `docker run --name docker_wordpress --link mysql_wordpress:mysql -p 8080:80 -d wordpress`
+
+## 查看实时日志
+
+`docker logs -f -t --since="2018-01-01" --tail=10 wordpress`
+
+--since : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。
+
+-f : 查看实时日志
+
+-t : 查看日志产生的日期
+
+-tail=10 : 查看最后的10条日志。
+
+wordpress : 容器名称（必须）
