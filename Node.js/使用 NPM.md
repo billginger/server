@@ -18,6 +18,12 @@ npm list -g --depth 0
 sudo npm i -g express-generator
 ```
 
+## 指定安装版本
+
+```
+npm i --save-dev antd@2.x
+```
+
 ## 卸载
 
 ```
