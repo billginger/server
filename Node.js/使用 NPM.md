@@ -18,16 +18,22 @@ npm list -g --depth 0
 sudo npm i -g express-generator
 ```
 
-## 指定安装版本
+## 卸载
+
+```
+sudo npm un -g express-generator
+```
+
+## 安装指定版本
 
 ```
 npm i --save-dev antd@2.x
 ```
 
-## 卸载
+## 不安装开发依赖模块（用于生产服务器）
 
 ```
-sudo npm un -g express-generator
+npm i --production
 ```
 
 ## 目录权限问题
