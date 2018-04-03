@@ -84,6 +84,12 @@ cat /etc/redhat-release
 rpm -qa | grep <关键字>
 ```
 
+## 按关键词查询日志
+
+```
+grep 'H5 error: Siebel' lhkwmp_err-0.log
+```
+
 ## 查看内存使用量和交换区使用量
 
 ```
