@@ -28,6 +28,12 @@ db.message.find().sort({ _id: -1 })
 db.getCollection('message').find({}).limit(161355)
 ```
 
+## 连接远程数据库
+
+```
+mongo --host 10.16.0.9:27017 --authenticationDatabase admin -u mongouser -p password
+```
+
 ## 导出数据库
 
 ### 本地，指定端口，打包成 gz 文件
@@ -79,4 +85,16 @@ mongorestore --gzip --archive=/Users/bill/node/backup/wmp.gz --nsFrom 'wmp.*' --
 ```
 use admin
 db.runCommand({ renameCollection: "[oldDbName].[collectionName]", to: "[newDbName].[collectionName]" })
+```
+
+## 导出集合
+
+```
+mongoexport -h 10.16.0.9:27017 --authenticationDatabase admin -u lhkwmp -p passoword -d lhkwmp -c member_copy -o member_copy.json
+```
+
+## 导入集合
+
+```
+mongoimport -h 10.16.0.9:27017 --authenticationDatabase admin -u lhkwmp -p passoword -d lhkwmp_uat -c member_copy --file member_copy.json
 ```
