@@ -96,12 +96,6 @@ grep 'H5 error: Siebel' lhkwmp_err-0.log
 free -m
 ```
 
-## 查看各分区使用情况
-
-```
-df -h
-```
-
 ## 查看所有进程
 
 ```
