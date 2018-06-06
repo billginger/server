@@ -12,13 +12,13 @@
 
 ## 对容器进行修改
 
-下载文件
+更新 apk 本地镜像源
 
-`wget https://download.strongswan.org/strongswan-5.6.1.tar.bz2`
+`apk update`
 
-解压文件
+安装 strongSwan
 
-`tar -xf strongswan-5.6.1.tar.bz2`
+`apk add strongswan`
 
 ## 对容器进行管理
 
@@ -61,6 +61,8 @@ docker exec -it 6f9703e8cc78 /bin/sh
 从容器创建一个新的镜像
 
 `docker commit 6f9703e8cc78 strongswan:0.1`
+
+`docker commit -a 'Bill' -m 'apk update & add strongswan' bf7be2f4b0cf billginger/images:strongswan-0.2`
 
 按照 Docker Hub 命名规范标记镜像
 
