@@ -6,6 +6,7 @@
 
 ```
 db.message.find({ createdAt: { $gte: new Date('2017-8-1 11:51:00') } })
+db.member.find({ createdAt: { $gte: ISODate('2018-06-06'), $lt: ISODate('2018-06-07') } })
 ```
 
 > 备注：gt大于，lt小于，gte大于等于，lte小于等于
