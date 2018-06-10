@@ -47,3 +47,9 @@ mv node-v8.11.2-linux-x64 node
 * 大概在倒数第 3 行，有一行 PATH=$PATH:$HOME/bin，将其修改为 PATH=$PATH:$HOME/bin:[Node.js路径]
 * 断开并重新连接服务器，使PATH环境变量生效
 * 在用户目录输入 node -v，显示版本号，说明配置成功
+
+## 安装 PM2
+
+```
+npm install pm2 -g
+```
