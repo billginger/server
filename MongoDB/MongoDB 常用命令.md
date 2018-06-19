@@ -17,6 +17,18 @@ db.member.find({ createdAt: { $gte: ISODate('2018-06-06'), $lt: ISODate('2018-06
 db.message.find({ CreateTime: { $lt: 1504680640, $gt: 1504679775 } }).count()
 ```
 
+### 包含
+
+```
+db.member.find({ tier:{ $in: ['Local-GC', 'Local-Members', 'Local-VIP', 'Local-VVIP', 'Tourist-GC', 'Tourist-VIP'] } })
+```
+
+### 不包含
+
+```
+db.member.find({ tier:{ $nin: ['Local-GC', 'Local-Members', 'Local-VIP', 'Local-VVIP', 'Tourist-GC', 'Tourist-VIP'] } })
+```
+
 ### 排序
 
 ```
