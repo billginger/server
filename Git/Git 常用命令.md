@@ -55,3 +55,15 @@ git pull origin wmp-dev
 git fetch origin wmp-dev
 git checkout wmp-dev
 ```
+
+## 查看代码更新记录
+
+```
+git log
+```
+
+## 代码回滚（切到之前的某个版本）
+
+```
+git checkout 6f7aa97
+```
