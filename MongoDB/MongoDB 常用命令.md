@@ -29,6 +29,12 @@ db.member.find({ tier:{ $in: ['Local-GC', 'Local-Members', 'Local-VIP', 'Local-V
 db.member.find({ tier:{ $nin: ['Local-GC', 'Local-Members', 'Local-VIP', 'Local-VVIP', 'Tourist-GC', 'Tourist-VIP'] } })
 ```
 
+### 字段不存在
+
+```
+db.member.find({ tier:{ $exists: false } })
+```
+
 ### 排序
 
 ```
