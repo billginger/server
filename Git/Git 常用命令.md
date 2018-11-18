@@ -43,6 +43,12 @@ git reset --hard
 git pull
 ```
 
+## 合并某分支到当前分支
+
+```
+git merge <name>
+```
+
 ## 检出指定分支，并与本地当前分支合并
 
 ```
