@@ -32,7 +32,7 @@ Run `docker version` to check that you have the latest release installed.
 
 vpn.env
 
-```r
+```s
 # Define your own values for these variables
 # - DO NOT put "" or '' around values, or add space around =
 # - DO NOT use these special characters within values: \ " '
@@ -48,6 +48,16 @@ VPN_PASSWORD=your_vpn_password
 # VPN_ADDL_PASSWORDS=additional_password_1 additional_password_2
 ```
 
+For example:
+
+```s
+VPN_IPSEC_PSK=888888
+VPN_USER=admin
+VPN_PASSWORD=123456
+VPN_ADDL_USERS=Jack Jones
+VPN_ADDL_PASSWORDS=666666 777777
+```
+
 ## Start VPN
 
 **Important:** First, load the IPsec af_key kernel module on the Docker host:
@@ -56,7 +66,7 @@ VPN_PASSWORD=your_vpn_password
 
 Create a new Docker container from this image (replace ./vpn.env with your own env file):
 
-```r
+```s
 docker run \
     --name ipsec-vpn-server \
     --env-file ./vpn.env \
@@ -68,6 +78,10 @@ docker run \
     hwdsl2/ipsec-vpn-server
 ```
 
+You can also save the above command as an alias:
+
+`alias vpn='docker run --name ipsec-vpn-server --env-file ./vpn.env --restart=always -p 500:500/udp -p 4500:4500/udp -v /lib/modules:/lib/modules:ro -d --privileged hwdsl2/ipsec-vpn-server'`
+
 ## Retrieve VPN login details
 
 If you did not specify an env file in the docker run command above, VPN_USER will default to vpnuser and both VPN_IPSEC_PSK and VPN_PASSWORD will be randomly generated. To retrieve them, view the container logs:
@@ -76,7 +90,7 @@ If you did not specify an env file in the docker run command above, VPN_USER wil
 
 Search for these lines in the output:
 
-```r
+```s
 Connect to your new VPN with these details:
 
 Server IP: your_vpn_server_ip
@@ -98,6 +112,13 @@ To check the status of your IPsec VPN server, you can pass ipsec status to your 
 Or display current established VPN connections:
 
 `docker exec -it ipsec-vpn-server ipsec whack --trafficstatus`
+
+## Exit VPN
+
+```s
+docker stop ipsec-vpn-server
+docker rm ipsec-vpn-server
+```
 
 ## Next steps
 
