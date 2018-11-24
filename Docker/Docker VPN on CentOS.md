@@ -30,9 +30,9 @@ Run `docker version` to check that you have the latest release installed.
 
 ## Create env file
 
-vpn.env
+~/vpn.env
 
-```s
+```r
 # Define your own values for these variables
 # - DO NOT put "" or '' around values, or add space around =
 # - DO NOT use these special characters within values: \ " '
@@ -50,7 +50,7 @@ VPN_PASSWORD=your_vpn_password
 
 For example:
 
-```s
+```r
 VPN_IPSEC_PSK=888888
 VPN_USER=admin
 VPN_PASSWORD=123456
@@ -66,10 +66,10 @@ VPN_ADDL_PASSWORDS=666666 777777
 
 Create a new Docker container from this image (replace ./vpn.env with your own env file):
 
-```s
+```r
 docker run \
-    --name ipsec-vpn-server \
-    --env-file ./vpn.env \
+    --name vpn \
+    --env-file ~/vpn.env \
     --restart=always \
     -p 500:500/udp \
     -p 4500:4500/udp \
@@ -80,17 +80,17 @@ docker run \
 
 You can also save the above command as an alias:
 
-`alias vpn='docker run --name ipsec-vpn-server --env-file ./vpn.env --restart=always -p 500:500/udp -p 4500:4500/udp -v /lib/modules:/lib/modules:ro -d --privileged hwdsl2/ipsec-vpn-server'`
+`alias vpn='docker run --name vpn --env-file ~/vpn.env --restart=always -p 500:500/udp -p 4500:4500/udp -v /lib/modules:/lib/modules:ro -d --privileged hwdsl2/ipsec-vpn-server'`
 
 ## Retrieve VPN login details
 
 If you did not specify an env file in the docker run command above, VPN_USER will default to vpnuser and both VPN_IPSEC_PSK and VPN_PASSWORD will be randomly generated. To retrieve them, view the container logs:
 
-`docker logs ipsec-vpn-server`
+`docker logs vpn`
 
 Search for these lines in the output:
 
-```s
+```r
 Connect to your new VPN with these details:
 
 Server IP: your_vpn_server_ip
@@ -101,24 +101,21 @@ Password: your_vpn_password
 
 (Optional) Backup the generated VPN login details (if any) to the current directory:
 
-`docker cp ipsec-vpn-server:/opt/src/vpn-gen.env ./`
+`docker cp vpn:/opt/src/vpn-gen.env ./`
 
 ## Check server status
 
 To check the status of your IPsec VPN server, you can pass ipsec status to your container like this:
 
-`docker exec -it ipsec-vpn-server ipsec status`
+`docker exec -it vpn ipsec status`
 
 Or display current established VPN connections:
 
-`docker exec -it ipsec-vpn-server ipsec whack --trafficstatus`
+`docker exec -it vpn ipsec whack --trafficstatus`
 
 ## Exit VPN
 
-```s
-docker stop ipsec-vpn-server
-docker rm ipsec-vpn-server
-```
+`docker rm -f vpn`
 
 ## Next steps
 
