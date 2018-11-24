@@ -10,11 +10,22 @@
 
 ## 建立本地目录
 
-`mkdir -p ~/nginx/www ~/nginx/logs ~/nginx/conf`
+`mkdir -p ~/nginx/conf ~/nginx/logs ~/nginx/www`
 
 ## 从 Docker 中拷出配置文件
 
-`docker cp nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf`
+```r
+docker cp nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
+docker cp nginx:/etc/nginx/mime.types ~/nginx/conf/mime.types
+docker cp nginx:/etc/nginx/conf.d ~/nginx/conf/conf.d
+```
+
+## 从 Docker 中拷出 HTML 文件
+
+```r
+docker cp nginx:/usr/share/nginx/html/index.html ~/nginx/www
+docker cp nginx:/usr/share/nginx/html/50x.html ~/nginx/www
+```
 
 ## 强制移除原来的容器
 
@@ -22,4 +33,48 @@
 
 ## 以挂载本地目录和配置文件的方式再次运行容器
 
-`docker run --name nginx -d -p 8080:80 -v ~/nginx/www:/www -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/logs:/wwwlogs nginx`
+```r
+docker run --name nginx -d -p 8080:80 -v ~/nginx/www:/www -v ~/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/logs:/wwwlogs nginx
+```
+
+## 编辑配置文件
+
+```nginx
+
+user  nginx;
+worker_processes  1;
+
+error_log  /wwwlogs/error.log warn;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /wwwlogs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+
+```
+
+## 重启 Docker 容器
+
+`docker restart nginx`
