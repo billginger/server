@@ -70,7 +70,33 @@ http {
 
     #gzip  on;
 
-    include /etc/nginx/conf.d/*.conf;
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+        #access_log  /var/log/nginx/host.access.log  main;
+
+        location / {
+            root   /www;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /www;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+    }
 }
 
 ```
