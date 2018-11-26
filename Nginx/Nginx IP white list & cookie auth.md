@@ -1,6 +1,6 @@
 # Nginx IP 白名单和 Cookie 验证
 
-本文以一个 Nginx 初学者的角度来探索如何实现 Nginx IP 白名单和 Cookie 验证的功能。
+本文以一个 Nginx 初学者的角度来探索如何实现 Nginx IP 白名单和 Cookie 验证。
 
 ## 判断语句
 
@@ -10,15 +10,22 @@ Nginx 的判断语句通常使用 HttpRewrite 模块来实现，HttpRewrite 是 
 
 __if__
 * 使用环境:	server, location
-* 这里要特别注意“使用环境”，正如 if 只能放到 server 和 location 中那样，放到 if 语句中的指令，使用环境也必须包括 if。
+
+> 这里要特别注意“使用环境”，正如 if 只能放到 server 和 location 中那样，放到 if 语句中的指令，使用环境也必须包括 if。
+> 另外，HttpRewrite 的 if 不支持嵌套，其实更像 JavaScript 中的 switch。
+
+__break__
+* 使用环境:	server, location, if
+
+> break 用来跳出判断语句。准确的说，是跳出所有 HttpRewrite 的语句。
 
 ## 获取客户端 IP
 
-`sss`
+`remote_addr`
 
 ## 获取客户端 Cookie
 
-`sss`
+`$COOKIE_name`
 
 ## 设置客户端 Cookie
 
