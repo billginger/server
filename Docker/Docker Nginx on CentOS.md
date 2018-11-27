@@ -101,6 +101,19 @@ http {
 
 ```
 
+## 再次运行容器
+
+```r
+docker rm -f nginx
+docker run --name nginx -d -p 8080:80 -v ~/nginx/www:/www -v ~/nginx/conf:/etc/nginx -v ~/nginx/logs:/wwwlogs nginx
+```
+
+## 在容器外重新加载 Nginx 配置文件
+
+```r
+docker exec nginx bash -c "nginx -s reload"
+```
+
 ## 重启 Docker 容器
 
 `docker restart nginx`

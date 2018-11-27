@@ -10,13 +10,11 @@ Nginx 的判断语句通常使用 HttpRewrite 模块来实现，HttpRewrite 是 
 
 __if__
 * 使用环境:	server, location
-
 > 这里要特别注意“使用环境”，正如 if 只能放到 server 和 location 中那样，放到 if 语句中的指令，使用环境也必须包括 if。
 > 另外，HttpRewrite 的 if 不支持嵌套，其实更像 JavaScript 中的 switch。
 
 __break__
 * 使用环境:	server, location, if
-
 > break 用来跳出判断语句。准确的说，是跳出所有 HttpRewrite 的语句。
 
 ## 获取客户端 IP
@@ -62,7 +60,7 @@ __userid_name__
 
 ```nginx
 user  nginx;
-worker_processes  1;
+worker_processes  auto;
 
 error_log  /wwwlogs/error.log warn;
 pid        /var/run/nginx.pid;
@@ -92,22 +90,28 @@ http {
         listen       80;
         server_name  localhost;
 
+        include  /etc/nginx/ip.conf;
+        include  /etc/nginx/cookie.conf;
+
         location / {
             if ($remote_addr = 182.40.247.145) {
-                proxy_pass   http://www.thompsons.cn;
+                proxy_pass  http://www.thompsons.cn;
                 break;
             }
             if ($COOKIE_uid ~ test) {
-                proxy_pass   http://www.thompsons.cn;
+                proxy_pass  http://www.thompsons.cn;
                 break;
             }
-            if ($query_string !~* "login=true") {
-                proxy_pass   http://www.thursdayplantation.net.cn;
-                break;
-            }
-            userid on;
-            userid_name uid=test;
+            proxy_pass  http://www.thursdayplantation.net.cn;
         }
     }
 }
 ```
+
+## ip.conf
+
+pending
+
+## cookie.conf
+
+pending
