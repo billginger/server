@@ -2,6 +2,10 @@
 
 本文以一个 Nginx 初学者的角度来探索如何实现 Nginx IP 白名单和 Cookie 验证。
 
+## 声明变量
+
+pending
+
 ## 判断语句
 
 Nginx 的判断语句通常使用 HttpRewrite 模块来实现，HttpRewrite 是 Nginx 的基本模块，无需另外安装。
