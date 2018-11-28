@@ -15,9 +15,9 @@
 ## 从 Docker 中拷出配置文件
 
 ```r
-docker cp nginx:/etc/nginx/nginx.conf ~/nginx/conf/nginx.conf
-docker cp nginx:/etc/nginx/mime.types ~/nginx/conf/mime.types
-docker cp nginx:/etc/nginx/conf.d ~/nginx/conf/conf.d
+docker cp nginx:/etc/nginx/nginx.conf ~/nginx/conf
+docker cp nginx:/etc/nginx/mime.types ~/nginx/conf
+docker cp nginx:/etc/nginx/conf.d ~/nginx/conf
 ```
 
 ## 从 Docker 中拷出 HTML 文件
