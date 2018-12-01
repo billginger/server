@@ -25,3 +25,17 @@ docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-
 * --name: 给容器命名
 * -v: 挂载目录
 * -w: 工作目录
+
+## 以容器方式使用
+
+运行 Node.js 容器：
+
+```
+docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine /bin/sh -c "while true; do echo 1; sleep 1; done"
+```
+
+进入 Node.js 容器：
+
+```
+docker exec -it node /bin/sh
+```
