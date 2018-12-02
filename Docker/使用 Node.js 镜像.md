@@ -19,8 +19,8 @@ docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-
 ```
 
 参数释义：
-* -i: 以交互模式运行容器，通常与 -t 同时使用；
-* -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+* -i: 以交互模式运行容器，通常与 -t 同时使用
+* -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用
 * --rm: 在容器退出时自动清理容器内部的文件系统
 * --name: 给容器命名
 * -v: 挂载目录
@@ -34,7 +34,41 @@ docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-
 docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine /bin/sh -c "while true; do echo 1; sleep 1; done"
 ```
 
+参数释义：
+* -d: 后台运行容器，并返回容器ID
+* -p: 端口映射，格式为：主机(宿主)端口:容器端口
+
+镜像名称后面的命令是为了防止容器自动退出。
+
 进入 Node.js 容器：
+
+```
+docker exec -it node /bin/sh
+```
+
+## 封装自己的镜像
+
+创建 Dockerfile 文件：
+
+```
+FROM node:lts-alpine
+
+RUN npm install pm2 -g
+EXPOSE 3000
+CMD tail -f /dev/null
+```
+
+制作镜像：
+
+`docker build -t node-with-pm2 .`
+
+运行镜像：
+
+```
+docker run --name node -v /data:/data -d -p 3000:3000 node-with-pm2
+```
+
+进入容器：
 
 ```
 docker exec -it node /bin/sh
