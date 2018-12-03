@@ -105,5 +105,5 @@ docker exec -it nginx bash
 以挂载本地目录和配置文件的方式运行容器：
 
 ```r
-docker run --name nginx -d -p 80:80 -v /data/nginx:/etc/nginx nginx
+docker run --name nginx -d -p 80:80 -v /data/nginx:/etc/nginx nginx-node-pm2
 ```
