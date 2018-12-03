@@ -14,7 +14,7 @@
 
 直接使用镜像运行 Node.js 脚本：
 
-```
+```r
 docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-alpine node test.js
 ```
 
@@ -30,7 +30,7 @@ docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-
 
 运行 Node.js 容器：
 
-```
+```r
 docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine sh -c "while true; do echo 1; sleep 1; done"
 ```
 
@@ -42,7 +42,7 @@ docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine sh -c "whi
 
 进入 Node.js 容器：
 
-```
+```r
 docker exec -it node sh
 ```
 
@@ -50,7 +50,7 @@ docker exec -it node sh
 
 创建 Dockerfile 文件：
 
-```
+```r
 FROM node:lts-alpine
 
 RUN npm install pm2 -g
@@ -64,13 +64,13 @@ CMD tail -f /dev/null
 
 运行镜像：
 
-```
+```r
 docker run --name node -v /data:/data -d -p 3000:3000 node-with-pm2
 ```
 
 进入容器：
 
-```
+```r
 docker exec -it node sh
 ```
 
@@ -78,7 +78,7 @@ docker exec -it node sh
 
 创建 Dockerfile 文件：
 
-```
+```r
 FROM nginx
 
 ADD node /node
@@ -92,13 +92,13 @@ RUN npm install pm2 -g
 
 运行镜像：
 
-```
+```r
 docker run --name nginx -d -p 80:80 nginx-node-pm2
 ```
 
 进入容器：
 
-```
+```r
 docker exec -it nginx bash
 ```
 
