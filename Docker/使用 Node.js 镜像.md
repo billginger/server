@@ -31,7 +31,7 @@ docker run -it --rm --name node -v "$PWD":/usr/src/app -w /usr/src/app node:lts-
 运行 Node.js 容器：
 
 ```
-docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine /bin/sh -c "while true; do echo 1; sleep 1; done"
+docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine sh -c "while true; do echo 1; sleep 1; done"
 ```
 
 参数释义：
@@ -43,7 +43,7 @@ docker run --name node -v /data:/data -d -p 3000:3000 node:lts-alpine /bin/sh -c
 进入 Node.js 容器：
 
 ```
-docker exec -it node /bin/sh
+docker exec -it node sh
 ```
 
 ## 封装自己的镜像
@@ -71,5 +71,39 @@ docker run --name node -v /data:/data -d -p 3000:3000 node-with-pm2
 进入容器：
 
 ```
-docker exec -it node /bin/sh
+docker exec -it node sh
+```
+
+## 基于 Nginx 镜像封装
+
+创建 Dockerfile 文件：
+
+```
+FROM nginx
+
+ADD node /node
+ENV PATH $PATH:/node/bin
+RUN npm install pm2 -g
+```
+
+制作镜像：
+
+`docker build -t nginx-node-pm2 .`
+
+运行镜像：
+
+```
+docker run --name nginx -d -p 80:80 nginx-node-pm2
+```
+
+进入容器：
+
+```
+docker exec -it nginx bash
+```
+
+以挂载本地目录和配置文件的方式运行容器：
+
+```r
+docker run --name nginx -d -p 80:80 -v /data/nginx:/etc/nginx nginx
 ```
