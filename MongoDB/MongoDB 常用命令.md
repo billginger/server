@@ -47,6 +47,12 @@ db.message.find().sort({ _id: -1 })
 db.getCollection('message').find({}).limit(161355)
 ```
 
+## 批量修改
+
+```
+db.voucher_detail.update({appid:'wx227ae87002ae6f8f',createdAt:{$gte:ISODate('2019-03-01')}},{$set:{endTime:ISODate('2019-03-31T15:59:59.521Z')}},{multi:true})
+```
+
 ## 连接远程数据库
 
 ```
