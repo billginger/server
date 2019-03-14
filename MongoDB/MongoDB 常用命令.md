@@ -35,6 +35,12 @@ db.member.find({ tier:{ $nin: ['Local-GC', 'Local-Members', 'Local-VIP', 'Local-
 db.member.find({ tier:{ $exists: false } })
 ```
 
+### 字段长度大于0
+
+```
+db.member.find({ tier:{ $regex: /^.{1,}$/ } })
+```
+
 ### 排序
 
 ```
