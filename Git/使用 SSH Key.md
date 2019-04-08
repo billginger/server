@@ -11,3 +11,11 @@
 `cat id_rsa.pub`
 
 复制打印出来的字符到 Github。
+
+## 对于非 id_rsa.pub 文件
+
+有时我们的 SSH Key 文件不是以 id_rsa.pub 命名的，无法使用 SSH 推送，需要在终端中先执行以下命令：
+
+```
+ssh-add -K ~/.ssh/tctt-Bitbucket
+```
