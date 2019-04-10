@@ -54,6 +54,12 @@ rm -rf node_modules
 less config.json
 ```
 
+## 查看文件最后 10 行，循环读取
+
+```
+tail -f notes.log
+```
+
 ## 安装 Git
 
 ```
