@@ -111,6 +111,7 @@ docker run --name nginx -d -p 8080:80 -v ~/nginx/www:/www -v ~/nginx/conf:/etc/n
 ## 在容器外重新加载 Nginx 配置文件
 
 ```r
+docker exec nginx bash -c "nginx -t"
 docker exec nginx bash -c "nginx -s reload"
 ```
 
