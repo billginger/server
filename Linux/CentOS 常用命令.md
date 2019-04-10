@@ -132,11 +132,23 @@ hostnamectl set-hostname xxx
 ## 上传文件（在本地目录操作）
 
 ```
-scp web.json root@szx.thinkchina.com.au:/bill/site/
+scp web.json username@servername:/bill/site/
 ```
 
 ## 下载文件（在本地目录操作）
 
 ```
-scp root@szx.thinkchina.com.au:/bill/site/web.json ./
+scp username@servername:/bill/site/web.json ./
+```
+
+## 上传目录（在本地目录操作）
+
+```
+scp -r local_dir username@servername:remote_dir
+```
+
+## 下载目录（在本地目录操作）
+
+```
+scp -r username@servername:remote_dir local_dir
 ```
