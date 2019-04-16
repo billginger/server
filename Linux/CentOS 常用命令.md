@@ -158,3 +158,15 @@ scp -r local_dir username@servername:remote_dir
 ```
 scp -r username@servername:remote_dir local_dir
 ```
+
+## 使用 Get 方法测试 HTTP 服务
+
+```
+curl -X GET "localhost:3020/facebook/webhook?hub.verify_token=abc&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
+```
+
+## 使用 Post 方法测试 HTTP 服务
+
+```
+curl -H "Content-Type: application/json" -X POST "localhost:3020/facebook/webhook" -d '{"object": "page", "entry": [{"messaging": [{"message": "TEST_MESSAGE"}]}]}'
+```
