@@ -53,6 +53,12 @@ db.message.find().sort({ _id: -1 })
 db.getCollection('message').find({}).limit(161355)
 ```
 
+## 聚合函数
+
+```
+db.getCollection('voucher_detail').aggregate([{$match:{createdAt:{$gte:ISODate('2019-05-01')}}},{$group:{_id:{openid:'$openid',appid:'$appid',campaign:'$campaign'},count:{$sum:1}}},{$match:{count:{$gt:1}}}])
+```
+
 ## 批量修改
 
 ```
