@@ -2,9 +2,13 @@
 
 ## 更改 SSH 默认端口
 
-编辑 `sshd_config` 文件，找到 `#Port 22`，去掉注释，改为新的端口号。
+编辑配置文件 `vi /etc/ssh/sshd_config`，找到 `#Port 22`，去掉注释，改为新的端口号，保存后退出。
 
-保存后退出，执行重启命令 `/etc/init.d/sshd restart`。
+CentOS6 执行重启命令 `/etc/init.d/sshd restart`。
+
+CentOS7 执行重启命令 `systemctl restart sshd.service`。
+
+断开连接重新连接，如连接不上，请检查是否已在“安全组”开启新的端口。
 
 ## 配置 PATH 环境变量
 
