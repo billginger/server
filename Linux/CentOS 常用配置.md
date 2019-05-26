@@ -1,5 +1,11 @@
 # CentOS 常用配置
 
+## 更改 SSH 默认端口
+
+编辑 `sshd_config` 文件，找到 `#Port 22`，去掉注释，改为新的端口号。
+
+保存后退出，执行重启命令 `/etc/init.d/sshd restart`。
+
 ## 配置 PATH 环境变量
 
 * 可以修改用户目录下的 .bash_profile 文件来配置 PATH 环境变量
