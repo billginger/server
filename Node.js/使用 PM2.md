@@ -36,3 +36,9 @@ npm install pm2 -g
 * pm2 monit
 * pm2 logs
 * pm2 kill
+
+## 传参
+
+```
+pm2 start npm -- start -- --host 0.0.0.0 --disable-host-check --compress --no-inline
+```
